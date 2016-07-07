@@ -1,0 +1,39 @@
+syntax = "proto2";
+
+option java_package = "ws.kotonoha.examples.api";
+
+message SentenceUnit {
+  required string content = 1;
+  required bool target = 2;
+}
+
+message ExampleSentence {
+  required bytes id = 1;
+  repeated SentenceUnit units = 2;
+}
+
+message ExamplePack {
+  repeated ExampleSentence sentences = 1;
+}
+
+enum ExampleSort {
+  Unknown = 0;
+  Noun = 1;
+  Verb = 2;
+  Adjective = 3;
+  Adverb = 4;
+}
+
+message ExampleQuery {
+  required ExampleSort kind = 1;
+  required string writing = 2;
+  required string reading = 3;
+}
+
+message ExamplePackRequest {
+  repeated ExampleQuery candidates = 1;
+}
+
+service KotonohaExamples {
+  rpc Generic(ExamplePackRequest) returns (ExamplePack) {}
+}

@@ -12,8 +12,20 @@ message ExampleSentence {
   repeated SentenceUnit units = 2;
 }
 
+enum PackStatus {
+  InternalFailure = 0;
+  Ok = 1;
+  InvalidQuery = 2;
+  UnsupportedQuery = 3;
+  BackendFailure = 4;
+}
+
 message ExamplePack {
   repeated ExampleSentence sentences = 1;
+  required int32 initialNum = 2;
+  required PackStatus status = 3;
+  required string query = 4;
+  optional string comment = 5;
 }
 
 enum ExampleTag {

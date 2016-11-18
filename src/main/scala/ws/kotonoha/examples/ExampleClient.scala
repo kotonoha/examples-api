@@ -29,7 +29,7 @@ trait ExampleClient extends AStreamClient {
 }
 
 object ExampleClient extends AClientCompanion[ExampleClient] {
-  override def name = KotonohaExamplesGrpc.descriptor.getName
+  override def name = KotonohaExamplesGrpc.KotonohaExamples.descriptor.getName
   override def build(channel: Channel, callOptions: CallOptions) = {
     val bldr = ClientBuilder(channel, callOptions)
     new ExampleClient {

@@ -5,7 +5,7 @@ option java_package = "ws.kotonoha.examples.api";
 message SentenceUnit {
   required string content = 1;
   optional string reading = 2;
-  required bool target = 3;
+  required int32 target = 3;
   required bool morph = 4;
 }
 
